@@ -1,23 +1,23 @@
 package service
 
 import (
-	"payment/domain/model"
-	"payment/domain/repository"
+	"github.com/wangjinh/payment/domain/model"
+	"github.com/wangjinh/payment/domain/repository"
 )
 
 type IPaymentDataService interface {
-	AddPayment(payment *model.Payment)(paymentid int64, err error)
-	DeletePaymentByID(paymentid int64)error
+	AddPayment(payment *model.Payment) (paymentid int64, err error)
+	DeletePaymentByID(paymentid int64) error
 	UpdatePayment(payment *model.Payment) error
-	FindPaymentByID(paymentid int64) (payment *model.Payment,err error)
-	FindPaymentAll()([]model.Payment,error)
+	FindPaymentByID(paymentid int64) (payment *model.Payment, err error)
+	FindPaymentAll() ([]model.Payment, error)
 }
 
 type PaymentDataService struct {
 	PaymentRepository repository.IPaymentRepostory
 }
 
-func NewPaymentDataService(paymentRepository repository.IPaymentRepostory) IPaymentDataService  {
+func NewPaymentDataService(paymentRepository repository.IPaymentRepostory) IPaymentDataService {
 	return &PaymentDataService{PaymentRepository: paymentRepository}
 }
 
@@ -40,4 +40,3 @@ func (p *PaymentDataService) FindPaymentByID(paymentid int64) (payment *model.Pa
 func (p *PaymentDataService) FindPaymentAll() ([]model.Payment, error) {
 	return p.PaymentRepository.FindPaymentAllByID()
 }
-

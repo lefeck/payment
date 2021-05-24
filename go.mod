@@ -1,4 +1,4 @@
-module payment
+module github.com/wangjinh/payment
 
 go 1.13
 
