@@ -1,6 +1,8 @@
 package main
 
 import (
+	"strconv"
+
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/micro/go-micro/v2"
@@ -11,12 +13,11 @@ import (
 	ratelimit "github.com/micro/go-plugins/wrapper/ratelimiter/uber/v2"
 	opentracing2 "github.com/micro/go-plugins/wrapper/trace/opentracing/v2"
 	"github.com/opentracing/opentracing-go"
-	"github.com/wangjinh/common"
-	"github.com/wangjinh/payment/domain/repository"
-	service2 "github.com/wangjinh/payment/domain/service"
-	"github.com/wangjinh/payment/handler"
-	"github.com/wangjinh/payment/proto/payment"
-	"strconv"
+	"github.com/asveg/common"
+	"github.com/asveg/payment/domain/repository"
+	service2 "github.com/asveg/payment/domain/service"
+	"github.com/asveg/payment/handler"
+	"github.com/asveg/payment/proto/payment"
 )
 
 var QPS = 1000
@@ -54,9 +55,8 @@ func main() {
 	db.SingularTable(true)
 
 	////初始化表
-	//if err :=repository.NewPaymentRepository(db).InitTable(); err !=nil {
-	//	log.Fatal(err)
-	//}
+	repository.NewPaymentRepository(db).InitTable()
+
 
 	//监控
 	common.PrometheusBoot(9082)
@@ -65,7 +65,7 @@ func main() {
 	service := micro.NewService(
 		micro.Name("go.micro.service.payment"),
 		micro.Version("latest"),
-		micro.Address("0.0.0.0:8356"),
+		micro.Address("0.0.0.0:8256"),
 		//注册consul
 		micro.Registry(consul),
 		//添加链路追踪

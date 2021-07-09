@@ -2,7 +2,7 @@ package repository
 
 import (
 	"github.com/jinzhu/gorm"
-	"github.com/wangjinh/payment/domain/model"
+	"github.com/asveg/payment/domain/model"
 )
 
 type IPaymentRepostory interface {

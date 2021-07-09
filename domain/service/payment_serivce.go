@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/wangjinh/payment/domain/model"
-	"github.com/wangjinh/payment/domain/repository"
+	"github.com/asveg/payment/domain/model"
+	"github.com/asveg/payment/domain/repository"
 )
 
 type IPaymentDataService interface {

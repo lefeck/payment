@@ -2,11 +2,11 @@ package handler
 
 import (
 	"context"
-	"github.com/wangjinh/common"
-	"github.com/wangjinh/payment/domain/model"
-	"github.com/wangjinh/payment/domain/service"
+	"github.com/asveg/common"
+	"github.com/asveg/payment/domain/model"
+	"github.com/asveg/payment/domain/service"
 
-	. "github.com/wangjinh/payment/proto/payment"
+	. "github.com/asveg/payment/proto/payment"
 )
 
 type Payment struct {
@@ -48,7 +48,7 @@ func (p *Payment) UpdatePayment(ctx context.Context, request *PaymentInfo, respo
 	if err := p.PaymentDataService.UpdatePayment(payment); err != nil {
 		return err
 	}
-
+	response.Msg="update payment successfully"
 	return nil
 }
 

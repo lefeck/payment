@@ -1,4 +1,4 @@
-module github.com/wangjinh/payment
+module github.com/asveg/payment
 
 go 1.13
 
@@ -7,6 +7,7 @@ go 1.13
 replace google.golang.org/grpc => google.golang.org/grpc v1.26.0
 
 require (
+	github.com/asveg/common v0.0.0-20210708090103-1a7bb8a299cf
 	github.com/golang/protobuf v1.5.2
 	github.com/jinzhu/gorm v1.9.16
 	github.com/micro/go-micro/v2 v2.9.1
@@ -17,6 +18,5 @@ require (
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/uber/jaeger-client-go v2.28.0+incompatible // indirect
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
-	github.com/wangjinh/common v0.0.0-20210514140253-870a21b44c3b
 	google.golang.org/protobuf v1.26.0
 )
